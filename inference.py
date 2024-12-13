@@ -40,7 +40,7 @@ def main():
     test_data_path = 'test'        # Replace with your test dataset directory
     output_csv_path = 'predictions.csv'         # Output CSV file
     batch_size = 128
-    num_workers = 10
+    num_workers = 16
 
     # Device
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -55,8 +55,8 @@ def main():
 
     # Test dataset and dataloader
     transform_test = transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
+        transforms.Resize(384),
+        transforms.CenterCrop(384),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
@@ -75,7 +75,7 @@ def main():
                 predictions.append((image_name, label))
 
     # Save predictions to CSV
-    df = pd.DataFrame(predictions, columns=['image_id', 'label'])
+    df = pd.DataFrame(predictions, columns=['image', 'id'])
     df.to_csv(output_csv_path, index=False)
     print(f"Predictions saved to {output_csv_path}")
 
