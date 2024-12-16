@@ -36,7 +36,7 @@ def load_checkpoint(checkpoint_path, model):
 
 def main():
     # Paths
-    checkpoint_path = 'best_checkpoint.pth'  # Replace with your checkpoint path
+    checkpoint_path = 'Checkpoint/best_checkpoint.pth'  # Replace with your checkpoint path
     test_data_path = 'test'        # Replace with your test dataset directory
     output_csv_path = 'predictions.csv'         # Output CSV file
     batch_size = 128
